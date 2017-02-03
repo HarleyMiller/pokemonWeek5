@@ -1,4 +1,20 @@
-(function() {
+(function() {      //JQUERY METHOD
+	$('nav li').on ('click', function() {
+		$.getJSON('includes/getPokemon.php', {critter : this.id}, function(data){
+			console.log(data);
+
+			$('.click-header').text(data.pokeName);
+			$('.hidden').removeClass('hidden');
+			$('.pokemon-large').attr('src', 'images/' + data.pokeImage + '.png');
+			$('.content-section').text(data.pokeDesc);
+			$('.habitat-header').text(data.pokeName + "lives here!");
+			$('.habitat').attr('src', 'images/' + data.bgImage + 'jpg');
+		});
+	});
+
+})();
+
+/*(function() {    //JAVASCRIPT METHOD
 	var pokeImages = document.querySelectorAll('nav li'),
 		critterHeader = document.querySelector('.click-header'),
 		critterImage = document.querySelector('.pokemon-large'),
@@ -48,4 +64,4 @@ function showPokemonInfo(){
 	img.addEventListener('click', makeRequest, false);
 	});
 
-})();
+})();*/
